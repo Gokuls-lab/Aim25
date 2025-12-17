@@ -1,0 +1,255 @@
+{
+  "name": "Infynd.com",
+  "domain": "Infynd.com",
+  "logo_url": null,
+  "description_short": "InFynd is a B2B data and marketing solutions provider founded in 2020 and headquartered in Coimbatore, India, with operations in the UK. It offers custom-built contact lists, data appending/enrichment...",
+  "description_long": "InFynd is a B2B data and marketing solutions provider founded in 2020 and headquartered in Coimbatore, India, with operations in the UK. It offers custom-built contact lists, data appending/enrichment, and demand generation campaigns. The company provides data on firmographics, technographics, contact details, and buyer intent signals. InFynd leverages AI and automation to build, validate, and deliver clean datasets, integrating with CRM and MarTech stacks for real-time reporting and analytics. All data is compliant with GDPR and CCPA. The mission is to provide exceptional value to businesses with accurate, industry-specific data and comprehensive contact information to help them reach revenue goals and make meaningful business connections. The vision is to be the top choice for changing how businesses connect with their ideal customer profiles through customized, innovative data solutions.",
+  "industry": "B2B Data & Marketing Solutions",
+  "sub_industry": "Unknown",
+  "products_services": [
+    "B2B/B2C Data Solutions",
+    "Data Appending",
+    "Data Cleansing & Optimization",
+    "Custom Data Builds",
+    "API & Integrations",
+    "Prospecting Tools",
+    "Omnichannel Marketing",
+    "AI-Powered Performance Measurement",
+    "MarTech Consulting",
+    "GDPR & CCPA Compliance"
+  ],
+  "locations": [
+    "Lily Hill House, Lily Hill Road, Bracknell, RG12 2SJ, GB",
+    "B-9 Caledon Square, Avinashi Road, Peelamedu, Coimbatore, Tamil Nadu, IN"
+  ],
+  "key_people": [
+    {
+      "name": "Harish Praveen",
+      "title": "CEO",
+      "role_category": "Management"
+    },
+    {
+      "name": "PrabhaKaran Natchi",
+      "title": "Human Resources Manager",
+      "role_category": "Management"
+    },
+    {
+      "name": "Michael John",
+      "title": "Compliance and Account Manager",
+      "role_category": "Management"
+    },
+    {
+      "name": "Chris Reid",
+      "title": "Sales Director",
+      "role_category": "Management"
+    },
+    {
+      "name": "Manikandan G",
+      "title": "Head of Marketing",
+      "role_category": "Management"
+    },
+    {
+      "name": "R. Kumar",
+      "title": "Head of Operations and Strategies",
+      "role_category": "Management"
+    },
+    {
+      "name": "Saravana B",
+      "title": "Technical Project Manager",
+      "role_category": "Management"
+    }
+  ],
+  "contact_email": "Contact Page: infynd.com/contact\\nGeneral Email: marketing@infynd.com\\nPhone: +44 3338980725\\nCompliance Email: compliance@infynd.com\\nAddress: Lily Hill House, Lily Hill Road, Bracknell, England, RG12 2SJ\\nKey Services: B2B Data, Demand Generation, Recruitment, MarTech",
+  "contact_phone": null,
+  "contact_page": null,
+  "tech_stack": [
+    "React",
+    "JavaScript",
+    "Node.js",
+    "Python",
+    "MySQL",
+    "PostgreSQL",
+    "MongoDB",
+    "Oracle"
+  ],
+  "graph_nodes": [
+    {
+      "id": "node_company",
+      "label": "Infynd.com",
+      "type": "Company",
+      "properties": {
+        "industry": "B2B Data & Marketing Solutions"
+      }
+    },
+    {
+      "id": "node_person_0",
+      "label": "Harish Praveen",
+      "type": "Person",
+      "properties": {
+        "title": "CEO"
+      }
+    },
+    {
+      "id": "node_person_1",
+      "label": "PrabhaKaran Natchi",
+      "type": "Person",
+      "properties": {
+        "title": "Human Resources Manager"
+      }
+    },
+    {
+      "id": "node_person_2",
+      "label": "Michael John",
+      "type": "Person",
+      "properties": {
+        "title": "Compliance and Account Manager"
+      }
+    },
+    {
+      "id": "node_person_3",
+      "label": "Chris Reid",
+      "type": "Person",
+      "properties": {
+        "title": "Sales Director"
+      }
+    },
+    {
+      "id": "node_person_4",
+      "label": "Manikandan G",
+      "type": "Person",
+      "properties": {
+        "title": "Head of Marketing"
+      }
+    },
+    {
+      "id": "node_person_5",
+      "label": "R. Kumar",
+      "type": "Person",
+      "properties": {
+        "title": "Head of Operations and Strategies"
+      }
+    },
+    {
+      "id": "node_person_6",
+      "label": "Saravana B",
+      "type": "Person",
+      "properties": {
+        "title": "Technical Project Manager"
+      }
+    },
+    {
+      "id": "node_prod_0",
+      "label": "B2B/B2C Data Solutions",
+      "type": "Product",
+      "properties": {}
+    },
+    {
+      "id": "node_prod_1",
+      "label": "Data Appending",
+      "type": "Product",
+      "properties": {}
+    },
+    {
+      "id": "node_prod_2",
+      "label": "Data Cleansing & Optimization",
+      "type": "Product",
+      "properties": {}
+    },
+    {
+      "id": "node_prod_3",
+      "label": "Custom Data Builds",
+      "type": "Product",
+      "properties": {}
+    },
+    {
+      "id": "node_prod_4",
+      "label": "API & Integrations",
+      "type": "Product",
+      "properties": {}
+    },
+    {
+      "id": "node_loc_0",
+      "label": "Lily Hill House, Lily Hill Road, Bracknell, RG12 2SJ, GB",
+      "type": "Location",
+      "properties": {}
+    },
+    {
+      "id": "node_loc_1",
+      "label": "B-9 Caledon Square, Avinashi Road, Peelamedu, Coimbatore, Tamil Nadu, IN",
+      "type": "Location",
+      "properties": {}
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "node_person_0",
+      "target": "node_company",
+      "relation": "works_at"
+    },
+    {
+      "source": "node_person_1",
+      "target": "node_company",
+      "relation": "works_at"
+    },
+    {
+      "source": "node_person_2",
+      "target": "node_company",
+      "relation": "works_at"
+    },
+    {
+      "source": "node_person_3",
+      "target": "node_company",
+      "relation": "works_at"
+    },
+    {
+      "source": "node_person_4",
+      "target": "node_company",
+      "relation": "works_at"
+    },
+    {
+      "source": "node_person_5",
+      "target": "node_company",
+      "relation": "works_at"
+    },
+    {
+      "source": "node_person_6",
+      "target": "node_company",
+      "relation": "works_at"
+    },
+    {
+      "source": "node_company",
+      "target": "node_prod_0",
+      "relation": "produces"
+    },
+    {
+      "source": "node_company",
+      "target": "node_prod_1",
+      "relation": "produces"
+    },
+    {
+      "source": "node_company",
+      "target": "node_prod_2",
+      "relation": "produces"
+    },
+    {
+      "source": "node_company",
+      "target": "node_prod_3",
+      "relation": "produces"
+    },
+    {
+      "source": "node_company",
+      "target": "node_prod_4",
+      "relation": "produces"
+    },
+    {
+      "source": "node_company",
+      "target": "node_loc_0",
+      "relation": "has_office_in"
+    },
+    {
+      "source": "node_company",
+      "target": "node_loc_1",
+      "relation": "has_office_in"
+    }
+  ]
+}

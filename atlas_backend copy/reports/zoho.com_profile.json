@@ -1,0 +1,333 @@
+{
+  "name": "zoho.com",
+  "domain": "zoho.com",
+  "logo_url": null,
+  "description_short": "Zoho is a global tech company providing a vast suite of integrated, cloud-based business software (CRM, finance, HR, etc.) to help businesses operate efficiently and collaboratively. It was founded in...",
+  "description_long": "Zoho is a global tech company providing a vast suite of integrated, cloud-based business software (CRM, finance, HR, etc.) to help businesses operate efficiently and collaboratively. It was founded in 1996 in Chennai, India, by Sridhar Vembu and Tony Thomas, with a major presence in Austin, Texas. The company offers over 55 cloud apps for sales, marketing, support, finance, HR, collaboration, and more, designed to run an entire business. Zoho's mission is to democratize business software by providing powerful, integrated tools at accessible prices for businesses of all sizes. The company operates on a private ownership model, focusing on long-term R&D, customer value, and investment in people and products rather than short-term stock gains. Key values include innovation, investing in people and products, creating high-value software, and embracing talent over credentials. Zoho's guiding principle is to equip all businesses with the tools they need to grow and work smarter, offering a complete, unified alternative to fragmented systems.",
+  "industry": "Business software, Enterprise software, Cloud computing, Artificial intelligence, Information technology",
+  "sub_industry": "Unknown",
+  "products_services": [
+    "Zoho CRM",
+    "Zoho Books",
+    "Zoho Desk",
+    "Zoho Mail",
+    "Zoho Cliq",
+    "Zoho Meeting",
+    "Zoho WorkDrive",
+    "Zoho People",
+    "Zoho Learn",
+    "Zoho Analytics",
+    "Zoho Creator",
+    "Zoho Sign",
+    "Zoho Campaigns",
+    "Zoho Social",
+    "Zoho Inventory",
+    "Zoho Billing",
+    "Zoho Expense",
+    "Zoho Invoice",
+    "Zoho Projects",
+    "Zoho Sprints",
+    "Zoho One",
+    "Zoho Workplace"
+  ],
+  "locations": [
+    "Chennai, Tamil Nadu, India: Estancia IT Park, GST Road, Kanchipuram District",
+    "Austin, Texas, USA: 979 Springdale Rd, Suite 123, Austin, TX 78702",
+    "Beijing, China: HaiDian District",
+    "Yokohama, Japan: Yokohama Kinkocho building",
+    "Utrecht, Netherlands: Beneluxlaan",
+    "Singapore: Cecil Street",
+    "Tenkasi, Tamil Nadu, India",
+    "Renigunta, Andhra Pradesh, India"
+  ],
+  "key_people": [
+    {
+      "name": "Shailesh Kumar Davey",
+      "title": "Group Chief Executive Officer (CEO)",
+      "role_category": "Management"
+    },
+    {
+      "name": "Sridhar Vembu",
+      "title": "Founder & Chief Scientist",
+      "role_category": "Management"
+    },
+    {
+      "name": "Mani Vembu",
+      "title": "CEO, Zoho.com division",
+      "role_category": "Management"
+    },
+    {
+      "name": "Tony Thomas",
+      "title": "Co-founder & Head of US operations",
+      "role_category": "Management"
+    },
+    {
+      "name": "Rajesh Ganesan",
+      "title": "CEO, ManageEngine division",
+      "role_category": "Management"
+    },
+    {
+      "name": "Vijay Sundaram",
+      "title": "Chief Strategy Officer (CSO)",
+      "role_category": "Management"
+    },
+    {
+      "name": "Raju Vegesna",
+      "title": "Chief Evangelist",
+      "role_category": "Management"
+    },
+    {
+      "name": "Praval Singh",
+      "title": "VP, Marketing & Customer Experience",
+      "role_category": "Management"
+    },
+    {
+      "name": "Hyther Nizam",
+      "title": "President, Zoho Middle East & Africa",
+      "role_category": "Management"
+    },
+    {
+      "name": "Rajendran Dandapani",
+      "title": "Director of Engineering",
+      "role_category": "Management"
+    }
+  ],
+  "contact_email": "zoho.com contact email: sales@zohocorp.com, upgrade@zohocorp.com, cn-sales@zohocorp.com, support@zohomail.com, support@zohocrm.com, support.usa@zohobooks.com, support.usa@zohoinventory.com, support@zohoanalytics.com, support@zohoforms.com, support@zohoaccounts.com, hello@zohocreator.com; phone numbers: USA: +1 844-755-5753 (Zoho Mail), +1(888) 900 9646 (Zoho CRM, Zoho Analytics), +1 844-316-5544 (Zoho Books, Zoho Inventory), India: 1800-102-9646 (Zoho Mail), 1800-572-6671 (Zoho Books), UK: +44 800-917-7226 (Zoho Mail), Australia: available; support available 24x5 (Monday to Friday) for Zoho Analytics; contact options include email, phone, live chat (after login), and community forums; dedicated support pages at zoho.com/[product]/support/ or zoho.com/[product]/contact-us.html; live chat available for Zoho Mail and Zoho Workplace; can contact via email, call, or chat; tweet @zohocares",
+  "contact_phone": null,
+  "contact_page": null,
+  "tech_stack": [
+    "Zoho Creator",
+    "Zoho CRM",
+    "Zoho Desk"
+  ],
+  "graph_nodes": [
+    {
+      "id": "node_company",
+      "label": "zoho.com",
+      "type": "Company",
+      "properties": {
+        "industry": "Business software, Enterprise software, Cloud computing, Artificial intelligence, Information technology"
+      }
+    },
+    {
+      "id": "node_person_0",
+      "label": "Shailesh Kumar Davey",
+      "type": "Person",
+      "properties": {
+        "title": "Group Chief Executive Officer (CEO)"
+      }
+    },
+    {
+      "id": "node_person_1",
+      "label": "Sridhar Vembu",
+      "type": "Person",
+      "properties": {
+        "title": "Founder & Chief Scientist"
+      }
+    },
+    {
+      "id": "node_person_2",
+      "label": "Mani Vembu",
+      "type": "Person",
+      "properties": {
+        "title": "CEO, Zoho.com division"
+      }
+    },
+    {
+      "id": "node_person_3",
+      "label": "Tony Thomas",
+      "type": "Person",
+      "properties": {
+        "title": "Co-founder & Head of US operations"
+      }
+    },
+    {
+      "id": "node_person_4",
+      "label": "Rajesh Ganesan",
+      "type": "Person",
+      "properties": {
+        "title": "CEO, ManageEngine division"
+      }
+    },
+    {
+      "id": "node_person_5",
+      "label": "Vijay Sundaram",
+      "type": "Person",
+      "properties": {
+        "title": "Chief Strategy Officer (CSO)"
+      }
+    },
+    {
+      "id": "node_person_6",
+      "label": "Raju Vegesna",
+      "type": "Person",
+      "properties": {
+        "title": "Chief Evangelist"
+      }
+    },
+    {
+      "id": "node_person_7",
+      "label": "Praval Singh",
+      "type": "Person",
+      "properties": {
+        "title": "VP, Marketing & Customer Experience"
+      }
+    },
+    {
+      "id": "node_person_8",
+      "label": "Hyther Nizam",
+      "type": "Person",
+      "properties": {
+        "title": "President, Zoho Middle East & Africa"
+      }
+    },
+    {
+      "id": "node_person_9",
+      "label": "Rajendran Dandapani",
+      "type": "Person",
+      "properties": {
+        "title": "Director of Engineering"
+      }
+    },
+    {
+      "id": "node_prod_0",
+      "label": "Zoho CRM",
+      "type": "Product",
+      "properties": {}
+    },
+    {
+      "id": "node_prod_1",
+      "label": "Zoho Books",
+      "type": "Product",
+      "properties": {}
+    },
+    {
+      "id": "node_prod_2",
+      "label": "Zoho Desk",
+      "type": "Product",
+      "properties": {}
+    },
+    {
+      "id": "node_prod_3",
+      "label": "Zoho Mail",
+      "type": "Product",
+      "properties": {}
+    },
+    {
+      "id": "node_prod_4",
+      "label": "Zoho Cliq",
+      "type": "Product",
+      "properties": {}
+    },
+    {
+      "id": "node_loc_0",
+      "label": "Chennai, Tamil Nadu, India: Estancia IT Park, GST Road, Kanchipuram District",
+      "type": "Location",
+      "properties": {}
+    },
+    {
+      "id": "node_loc_1",
+      "label": "Austin, Texas, USA: 979 Springdale Rd, Suite 123, Austin, TX 78702",
+      "type": "Location",
+      "properties": {}
+    },
+    {
+      "id": "node_loc_2",
+      "label": "Beijing, China: HaiDian District",
+      "type": "Location",
+      "properties": {}
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "node_person_0",
+      "target": "node_company",
+      "relation": "works_at"
+    },
+    {
+      "source": "node_person_1",
+      "target": "node_company",
+      "relation": "works_at"
+    },
+    {
+      "source": "node_person_2",
+      "target": "node_company",
+      "relation": "works_at"
+    },
+    {
+      "source": "node_person_3",
+      "target": "node_company",
+      "relation": "works_at"
+    },
+    {
+      "source": "node_person_4",
+      "target": "node_company",
+      "relation": "works_at"
+    },
+    {
+      "source": "node_person_5",
+      "target": "node_company",
+      "relation": "works_at"
+    },
+    {
+      "source": "node_person_6",
+      "target": "node_company",
+      "relation": "works_at"
+    },
+    {
+      "source": "node_person_7",
+      "target": "node_company",
+      "relation": "works_at"
+    },
+    {
+      "source": "node_person_8",
+      "target": "node_company",
+      "relation": "works_at"
+    },
+    {
+      "source": "node_person_9",
+      "target": "node_company",
+      "relation": "works_at"
+    },
+    {
+      "source": "node_company",
+      "target": "node_prod_0",
+      "relation": "produces"
+    },
+    {
+      "source": "node_company",
+      "target": "node_prod_1",
+      "relation": "produces"
+    },
+    {
+      "source": "node_company",
+      "target": "node_prod_2",
+      "relation": "produces"
+    },
+    {
+      "source": "node_company",
+      "target": "node_prod_3",
+      "relation": "produces"
+    },
+    {
+      "source": "node_company",
+      "target": "node_prod_4",
+      "relation": "produces"
+    },
+    {
+      "source": "node_company",
+      "target": "node_loc_0",
+      "relation": "has_office_in"
+    },
+    {
+      "source": "node_company",
+      "target": "node_loc_1",
+      "relation": "has_office_in"
+    },
+    {
+      "source": "node_company",
+      "target": "node_loc_2",
+      "relation": "has_office_in"
+    }
+  ]
+}

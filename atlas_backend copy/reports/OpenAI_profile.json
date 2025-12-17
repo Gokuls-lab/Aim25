@@ -1,0 +1,262 @@
+{
+  "name": "OpenAI",
+  "domain": "OpenAI",
+  "logo_url": null,
+  "description_short": "OpenAI is an AI research and deployment company whose mission is to ensure that artificial general intelligence (AGI)—by which we mean highly autonomous systems that outperform humans at most economic...",
+  "description_long": "OpenAI is an AI research and deployment company whose mission is to ensure that artificial general intelligence (AGI)—by which we mean highly autonomous systems that outperform humans at most economically valuable work—benefits all of humanity.",
+  "industry": "artificial intelligence (AI)",
+  "sub_industry": "Unknown",
+  "products_services": [
+    "ChatGPT",
+    "Sora",
+    "DALL-E"
+  ],
+  "locations": [
+    "San Francisco, California",
+    "New York City",
+    "Seattle, United States",
+    "London",
+    "Dublin",
+    "Paris",
+    "Brussels",
+    "Zurich",
+    "Tokyo",
+    "Singapore",
+    "New Delhi"
+  ],
+  "key_people": [
+    {
+      "name": "Sam Altman",
+      "title": "Chief Executive Officer (CEO)",
+      "role_category": "Management"
+    },
+    {
+      "name": "Greg Brockman",
+      "title": "President and Co-founder",
+      "role_category": "Management"
+    },
+    {
+      "name": "Mira Murati",
+      "title": "Chief Technology Officer (CTO)",
+      "role_category": "Management"
+    },
+    {
+      "name": "Sarah Friar",
+      "title": "Chief Financial Officer (CFO)",
+      "role_category": "Management"
+    },
+    {
+      "name": "Brad Lightcap",
+      "title": "Chief Operating Officer (COO)",
+      "role_category": "Management"
+    },
+    {
+      "name": "Fidji Simo",
+      "title": "Chief Executive of Applications",
+      "role_category": "Management"
+    },
+    {
+      "name": "Ilya Sutskever",
+      "title": "Co-founder",
+      "role_category": "Management"
+    },
+    {
+      "name": "Wojciech Zaremba",
+      "title": "Co-founder",
+      "role_category": "Management"
+    }
+  ],
+  "contact_email": "support@openai.com, +1 (1) 800 295 2950",
+  "contact_phone": null,
+  "contact_page": null,
+  "tech_stack": [
+    "Python",
+    "PostgreSQL",
+    "MySQL",
+    "API",
+    "JavaScript",
+    "React"
+  ],
+  "graph_nodes": [
+    {
+      "id": "node_company",
+      "label": "OpenAI",
+      "type": "Company",
+      "properties": {
+        "industry": "artificial intelligence (AI)"
+      }
+    },
+    {
+      "id": "node_person_0",
+      "label": "Sam Altman",
+      "type": "Person",
+      "properties": {
+        "title": "Chief Executive Officer (CEO)"
+      }
+    },
+    {
+      "id": "node_person_1",
+      "label": "Greg Brockman",
+      "type": "Person",
+      "properties": {
+        "title": "President and Co-founder"
+      }
+    },
+    {
+      "id": "node_person_2",
+      "label": "Mira Murati",
+      "type": "Person",
+      "properties": {
+        "title": "Chief Technology Officer (CTO)"
+      }
+    },
+    {
+      "id": "node_person_3",
+      "label": "Sarah Friar",
+      "type": "Person",
+      "properties": {
+        "title": "Chief Financial Officer (CFO)"
+      }
+    },
+    {
+      "id": "node_person_4",
+      "label": "Brad Lightcap",
+      "type": "Person",
+      "properties": {
+        "title": "Chief Operating Officer (COO)"
+      }
+    },
+    {
+      "id": "node_person_5",
+      "label": "Fidji Simo",
+      "type": "Person",
+      "properties": {
+        "title": "Chief Executive of Applications"
+      }
+    },
+    {
+      "id": "node_person_6",
+      "label": "Ilya Sutskever",
+      "type": "Person",
+      "properties": {
+        "title": "Co-founder"
+      }
+    },
+    {
+      "id": "node_person_7",
+      "label": "Wojciech Zaremba",
+      "type": "Person",
+      "properties": {
+        "title": "Co-founder"
+      }
+    },
+    {
+      "id": "node_prod_0",
+      "label": "ChatGPT",
+      "type": "Product",
+      "properties": {}
+    },
+    {
+      "id": "node_prod_1",
+      "label": "Sora",
+      "type": "Product",
+      "properties": {}
+    },
+    {
+      "id": "node_prod_2",
+      "label": "DALL-E",
+      "type": "Product",
+      "properties": {}
+    },
+    {
+      "id": "node_loc_0",
+      "label": "San Francisco, California",
+      "type": "Location",
+      "properties": {}
+    },
+    {
+      "id": "node_loc_1",
+      "label": "New York City",
+      "type": "Location",
+      "properties": {}
+    },
+    {
+      "id": "node_loc_2",
+      "label": "Seattle, United States",
+      "type": "Location",
+      "properties": {}
+    }
+  ],
+  "graph_edges": [
+    {
+      "source": "node_person_0",
+      "target": "node_company",
+      "relation": "works_at"
+    },
+    {
+      "source": "node_person_1",
+      "target": "node_company",
+      "relation": "works_at"
+    },
+    {
+      "source": "node_person_2",
+      "target": "node_company",
+      "relation": "works_at"
+    },
+    {
+      "source": "node_person_3",
+      "target": "node_company",
+      "relation": "works_at"
+    },
+    {
+      "source": "node_person_4",
+      "target": "node_company",
+      "relation": "works_at"
+    },
+    {
+      "source": "node_person_5",
+      "target": "node_company",
+      "relation": "works_at"
+    },
+    {
+      "source": "node_person_6",
+      "target": "node_company",
+      "relation": "works_at"
+    },
+    {
+      "source": "node_person_7",
+      "target": "node_company",
+      "relation": "works_at"
+    },
+    {
+      "source": "node_company",
+      "target": "node_prod_0",
+      "relation": "produces"
+    },
+    {
+      "source": "node_company",
+      "target": "node_prod_1",
+      "relation": "produces"
+    },
+    {
+      "source": "node_company",
+      "target": "node_prod_2",
+      "relation": "produces"
+    },
+    {
+      "source": "node_company",
+      "target": "node_loc_0",
+      "relation": "has_office_in"
+    },
+    {
+      "source": "node_company",
+      "target": "node_loc_1",
+      "relation": "has_office_in"
+    },
+    {
+      "source": "node_company",
+      "target": "node_loc_2",
+      "relation": "has_office_in"
+    }
+  ]
+}
