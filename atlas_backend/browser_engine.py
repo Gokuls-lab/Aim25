@@ -110,14 +110,73 @@ class ResearchBrowser:
             print(f"❌ Search Error: {e}")
             return "", []
 
+    def extract_logo(self, domain):
+        """
+        Navigates to the domain and attempts to extract a high-quality logo URL
+        by inspecting HTML tags (og:image, icon, img class='logo').
+        """
+        url = f"https://{domain}" if not domain.startswith("http") else domain
+        print(f"🖼️  Hunting for logo on: {url}")
+        
+        try:
+            self.driver.get(url)
+            WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.TAG_NAME, "body")))
+            
+            # Heuristic 1: Open Graph Image (Often high quality)
+            try:
+                og_img = self.driver.find_element(By.CSS_SELECTOR, 'meta[property="og:image"]').get_attribute("content")
+                if og_img: return og_img
+            except: pass
+
+            # Heuristic 2: Twitter Image
+            try:
+                tw_img = self.driver.find_element(By.CSS_SELECTOR, 'meta[name="twitter:image"]').get_attribute("content")
+                if tw_img: return tw_img
+            except: pass
+            
+            # Heuristic 3: Common Logo Selectors
+            selectors = [
+                 "img[src*='logo']", "img[class*='logo']", "img[id*='logo']",
+                 "header img", ".navbar-brand img", ".site-logo img"
+            ]
+            
+            for sel in selectors:
+                try:
+                    imgs = self.driver.find_elements(By.CSS_SELECTOR, sel)
+                    for img in imgs:
+                        src = img.get_attribute("src")
+                        # Basic filter: exclude tiny tracking pixels or SVGs if needed (keeping simple for now)
+                        if src and len(src) > 20: 
+                            return src
+                except: continue
+
+            # Heuristic 4: Icon/Favicon (Low res fallback)
+            try:
+                icon = self.driver.find_element(By.CSS_SELECTOR, 'link[rel="icon"]').get_attribute("href")
+                if icon: return icon
+            except: pass
+            
+            return ""
+
+        except Exception as e:
+            print(f"⚠️ Logo Extraction Failed: {e}")
+            return ""
+
     def scrape_text(self, url):
-        """Surfs to a URL and reads content."""
+        """Surfs to a URL and reads content + metadata."""
         print(f"📄 Surfing: {url}")
         try:
             self.driver.get(url)
             
             # Wait for content
             WebDriverWait(self.driver, 15).until(EC.presence_of_element_located((By.TAG_NAME, "body")))
+            
+            # Capture Metadata
+            title = self.driver.title
+            try:
+                desc = self.driver.find_element(By.CSS_SELECTOR, 'meta[name="description"]').get_attribute("content")
+            except:
+                desc = ""
             
             # Remove scripts/styles for cleaner text
             self.driver.execute_script("""
@@ -128,7 +187,10 @@ class ResearchBrowser:
             """)
             
             body = self.driver.find_element(By.TAG_NAME, "body").text
-            return " ".join(body.split())[:12000] 
+            clean_body = " ".join(body.split())[:12000]
+            
+            return f"TITLE: {title}\nDESCRIPTION: {desc}\nCONTENT:\n{clean_body}"
+            
         except Exception as e:
             print(f"⚠️ Surf Error ({url}): {e}")
             return ""

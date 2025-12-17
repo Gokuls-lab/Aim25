@@ -15,7 +15,11 @@ class LLMEngine:
                 messages=[
                     {'role': 'system', 'content': system_prompt},
                     {'role': 'user', 'content': prompt}
-                ]
+                ],
+                options={
+                    'temperature': 0,
+                    'num_ctx': 4096 # Ensure enough context for search results
+                }
             )
             return response['message']['content']
         except Exception as e:

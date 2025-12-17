@@ -13,29 +13,66 @@ class GraphEdge(BaseModel):
     relation: str # "works_at", "hq_at", "produces", "uses_tech"
 
 class KeyPerson(BaseModel):
-    name: str = "Unknown"
-    title: str = "Unknown"
-    role_category: str = "Management" # Management, Engineering, Founder, etc.
+    name: str = ""
+    title: str = ""
+    role_category: str = "Management"
+    email: Optional[str] = None
+    linkedin_url: Optional[str] = None
 
 class CompanyProfile(BaseModel):
-    name: str = "Unknown"
+    # Company Info
+    name: str = ""
     domain: str = ""
+    domain_status: str = "Active"
+    company_registration_number: Optional[str] = None
+    vat_number: Optional[str] = None
+    acronym: Optional[str] = None
     logo_url: Optional[str] = None
+    
+    # Description & Industry
     description_short: str = ""
     description_long: str = ""
-    industry: str = "Unknown"
-    sub_industry: str = "Unknown"
+    industry: str = ""
+    sub_industry: str = ""
+    sector: str = ""
+    sic_code: Optional[str] = None
+    sic_text: Optional[str] = None
+    tags: List[str] = []
     
-    # Lists
+    # Products & Services
     products_services: List[str] = []
-    locations: List[str] = [] # e.g. ["San Francisco (HQ)", "London", "Bangalore"]
-    key_people: List[KeyPerson] = []
+    service_type: Optional[str] = None 
+
+    # Certifications
+    certifications: List[str] = []
+
+    # Locations & Contact
+    locations: List[str] = [] 
+    full_address: Optional[str] = None
+    hq_indicator: str = "" 
     
     contact_email: Optional[str] = None
     contact_phone: Optional[str] = None
-    contact_page: Optional[str] = None
+    sales_phone: Optional[str] = None
+    fax: Optional[str] = None
+    mobile: Optional[str] = None
+    other_numbers: List[str] = []
+    hours_of_operation: Optional[str] = None
     
-    tech_stack: List[str] = [] # e.g. ["React", "AWS", "Python"]
+    # Social Media
+    social_linkedin: Optional[str] = None
+    social_facebook: Optional[str] = None
+    social_twitter: Optional[str] = None 
+    social_instagram: Optional[str] = None
+    social_youtube: Optional[str] = None
+    social_blog: Optional[str] = None
+    social_articles: List[str] = []
+
+    # Tech Stack
+    tech_stack: List[str] = []
+    
+    # Key People
+    key_people: List[KeyPerson] = []
     
     # Graph Data
     graph_nodes: List[GraphNode] = []
