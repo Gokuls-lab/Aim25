@@ -184,6 +184,57 @@ class ResearchBrowser:
              self.driver.close()
              self.driver.switch_to.window(self.driver.window_handles[-1])
 
+    # === NEW: Parallel Tab Management Methods ===
+    
+    def get_tab_count(self):
+        """Returns the number of currently open tabs."""
+        return len(self.driver.window_handles)
+    
+    def get_all_tab_handles(self):
+        """Returns list of all tab handles."""
+        return self.driver.window_handles
+    
+    def switch_to_tab_by_handle(self, handle):
+        """Switch to a specific tab by its handle."""
+        try:
+            self.driver.switch_to.window(handle)
+            return True
+        except:
+            return False
+    
+    def open_url_in_new_tab(self, url):
+        """Opens a URL in a new tab and switches to it."""
+        self.driver.execute_script(f"window.open('{url}', '_blank');")
+        self.driver.switch_to.window(self.driver.window_handles[-1])
+        return self.driver.window_handles[-1]
+    
+    def close_all_extra_tabs(self):
+        """Closes all tabs except the first one."""
+        while len(self.driver.window_handles) > 1:
+            self.driver.switch_to.window(self.driver.window_handles[-1])
+            self.driver.close()
+        self.driver.switch_to.window(self.driver.window_handles[0])
+    
+    def execute_search_url(self, engine, query):
+        """
+        Navigate to search URL directly (faster than typing).
+        Returns current page handle.
+        """
+        import urllib.parse
+        encoded_query = urllib.parse.quote_plus(query)
+        
+        if engine == "google":
+            url = f"https://www.google.com/search?q={encoded_query}"
+        else:  # duckduckgo
+            url = f"https://duckduckgo.com/?q={encoded_query}"
+        
+        try:
+            self.driver.get(url)
+            return self.driver.current_window_handle
+        except Exception as e:
+            print(f"⚠️ Search URL error: {e}")
+            return None
+
     def extract_logo(self, domain):
         url = f"https://{domain}" if not domain.startswith("http") else domain
         print(f"🖼️  Hunting for logo on: {url}")

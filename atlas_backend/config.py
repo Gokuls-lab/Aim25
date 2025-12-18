@@ -4,8 +4,15 @@ import os
 # Use a model good at following instructions. 
 # Recommended: "qwen2.5:7b" or "llama3.2" or "mistral"
 #"qwen3:4b-instruct-2507-q4_K_M qwen3:1.7b"
-MODEL_NAME = "qwen3:1.7b" 
+MODEL_NAME = "qwen3:4b-instruct-2507-q4_K_M" 
 TIMEOUT = 120 # Seconds for LLM generation
+MAX_RETRIES = 3  # Number of retry attempts for research operations (1-10 recommended)
+
+# --- PIPELINE CONFIGURATION ---
+USE_OPTIMIZED_PIPELINE = True  # True = new parallel pipeline, False = legacy sequential
+MAX_PARALLEL_TABS = 6  # Maximum tabs to open simultaneously
+MAX_URLS_TO_SCRAPE = 10  # Maximum unique URLs to scrape per domain
+SEARCH_DELAY_MS = 300  # Delay between opening new search tabs (ms)
 
 # --- BROWSER CONFIGURATION ---
 # Path to your Brave Browser executable
