@@ -34,7 +34,11 @@ class QueryGenerator:
         "sub_industry",
         "industry",
         "sector",
-        "tags"
+        "tags",
+        "company_registration_number",
+        "vat_number",
+        "acronym",
+        "tech_stack"
     ]
     
     def __init__(self, llm: LLMEngine):
@@ -153,6 +157,10 @@ class QueryGenerator:
             "vat_number": {
                 "google": f'"{domain}" "VAT" OR "VAT number" OR "VAT registered" GB',
                 "ddg": f"What is {company_name} VAT number? {domain} VAT registration"
+            },
+            "acronym": {
+                "google": f'"{domain}" "acronym" OR "abbreviation" OR "short name"',
+                "ddg": f"What is the acronym for {company_name}? {domain} abbreviation"
             }
         }
         
@@ -473,6 +481,22 @@ These are the MOST IMPORTANT fields - extract with highest priority:
    - Array of relevant keywords describing products/services
    - E.g., ["cloud computing", "ai solutions", "data security"]
 
+9. "company_registration_number" (IMPORTANT):
+   - Official company registration number (e.g., from Companies House)
+   - Format: Usually 8 digits for UK
+
+10. "vat_number" (IMPORTANT):
+    - Value Added Tax registration number
+    - Format: Country code + 9 digits (e.g., GB123456789)
+
+11. "acronym" (USEFUL):
+    - Common abbreviation or short name for the company where applicable
+    - E.g., "IBM" for "International Business Machines"
+
+12. "tech_stack" (IMPORTANT):
+    - Programming languages, frameworks, cloud providers mentioned
+    - E.g., ["Python", "React", "AWS", "TensorFlow"]
+
 === REQUIRED OUTPUT FORMAT (JSON) ===
 Return ONLY valid JSON with these fields:
 
@@ -485,6 +509,10 @@ Return ONLY valid JSON with these fields:
     "industry": "Primary Industry Category",
     "sector": "Business Sector",
     "tags": ["keyword1", "keyword2", "keyword3"],
+    "company_registration_number": "12345678",
+    "vat_number": "GB123456789",
+    "acronym": "ABC",
+    "tech_stack": ["React", "Python", "AWS"],
     "description_long": "Same as long_description for compatibility",
     "description_short": "Same as short_description for compatibility"
 }}
@@ -533,7 +561,11 @@ class ValidationEngine:
         "sub_industry",
         "industry",
         "sector",
-        "tags"
+        "tags",
+        "company_registration_number",
+        "vat_number",
+        "acronym",
+        "tech_stack"
     ]
     
     # Field name mappings (Excel name -> internal name)
@@ -545,7 +577,11 @@ class ValidationEngine:
         "sub_industry": "sub_industry",
         "industry": "industry",
         "sector": "sector",
-        "tags": "tags"
+        "tags": "tags",
+        "company_registration_number": "company_registration_number",
+        "vat_number": "vat_number",
+        "acronym": "acronym",
+        "tech_stack": "tech_stack"
     }
     
     # Critical fields that MUST have data
@@ -622,7 +658,11 @@ class OptimizedResearchAgent:
         "sub_industry",
         "industry",
         "sector",
-        "tags"
+        "tags",
+        "company_registration_number",
+        "vat_number",
+        "acronym",
+        "tech_stack"
     ]
     
     def __init__(self, domain: str, log_callback=None):
@@ -711,92 +751,66 @@ class OptimizedResearchAgent:
     
     def _retry_missing_fields(self, data: Dict, missing_fields: List[str]) -> Dict:
         """
-        Retry each missing field individually with multiple attempts.
-        Uses W/H format retry queries with different strategies per attempt.
+        Batch retry for ALL missing fields in parallel.
+        Executes a full search-scrape-extract cycle for the missing fields.
         """
-        self._log(f"🔄 Starting targeted retry for {len(missing_fields)} missing fields...")
+        self._log(f"🔄 Starting BATCH parallel retry for {len(missing_fields)} missing fields...")
         
-        for field in missing_fields:
-            self._log(f"   📌 Retrying field: {field}")
-            
-            field_found = False
-            
-            for attempt in range(1, self.max_retries + 1):
-                if field_found:
-                    break
+        current_missing = missing_fields
+        
+        for attempt in range(1, self.max_retries + 1):
+            if not current_missing:
+                self._log("   ✓ All fields found!")
+                break
                 
-                self._log(f"      Attempt {attempt}/{self.max_retries}...")
-                
-                # Get retry queries for this attempt
-                retry_queries = self.query_generator.generate_retry_queries(
+            self._log(f"   === RETRY ATTEMPT {attempt}/{self.max_retries} ===")
+            self._log(f"   Targeting {len(current_missing)} fields: {current_missing}")
+            
+            # 1. Generate new queries for ALL missing fields
+            # Use logic to generate strategy-based queries for the batch
+            retry_queries = {}
+            for field in current_missing:
+                retry_queries[field] = self.query_generator.generate_retry_queries(
                     self.domain, field, attempt
                 )
-                
-                # Execute searches for this field
-                field_data = self._execute_field_retry(field, retry_queries, attempt)
-                
-                if field_data:
-                    # Validate the result
-                    if self._is_valid_field_data(field_data):
-                        # Map to correct internal field name
-                        internal_field = self.validator.FIELD_MAPPING.get(field, field)
-                        data[internal_field] = field_data
-                        data[field] = field_data  # Also store with original name
-                        
-                        self._log(f"      ✓ Found data for {field}!")
-                        field_found = True
-                    else:
-                        self._log(f"      ✗ Data insufficient, trying next attempt...")
-                else:
-                    self._log(f"      ✗ No data found, trying next attempt...")
             
-            if not field_found:
-                self._log(f"      ❌ Could not find data for {field} after {self.max_retries} attempts")
-        
+            # 2. Parallel Search
+            self._log(f"      Running parallel search for missing fields...")
+            search_results, all_urls = self.parallel_browser.execute_parallel_searches(retry_queries)
+            
+            # 3. Scrape
+            self._log(f"      Scraping {len(all_urls)} new URLs...")
+            scraped_content = self.parallel_browser.scrape_deduplicated_urls(all_urls, max_urls=8)
+            
+            # 4. Extract (Targeted for missing fields)
+            self._log(f"      Extracting missing fields...")
+            new_data = self.bulk_extractor.extract_all_fields(
+                self.domain, search_results, scraped_content, current_missing
+            )
+            
+            # 5. Merge & Re-validate
+            for field, value in new_data.items():
+                if value and value not in ["", "not found", "n/a"]:
+                     # Map to internal
+                     internal_field = self.validator.FIELD_MAPPING.get(field, field)
+                     if not data.get(internal_field): # Only update if still missing
+                         data[internal_field] = value
+                         data[field] = value # Keep dual mapping
+            
+            # Check what's still missing
+            is_sufficient, still_missing = self.validator.validate_extraction(data)
+            
+            # Filter still_missing to only include those we were looking for (or just take all missing)
+            # We only care about the fields we are tracking
+            current_missing = [f for f in still_missing if f in self.EXCEL_FIELDS]
+            
+            if not current_missing:
+                 break
+                 
+        if current_missing:
+            self._log(f"   ❌ Could not find {len(current_missing)} fields after {self.max_retries} attempts: {current_missing}")
+            
         return data
-    
-    def _execute_field_retry(self, field: str, queries: Dict[str, str], attempt: int) -> Optional[str]:
-        """Execute retry search for a specific field."""
-        try:
-            # Alternate between Google and DDG based on attempt
-            if attempt % 2 == 1:
-                # Odd attempts: Google first
-                serp_text, urls = self.browser.search_google(queries.get("google", ""))
-                if not urls:
-                    self.browser.open_new_tab()
-                    serp_text2, urls = self.browser.search_duckduckgo(queries.get("ddg", ""))
-                    serp_text += "\n" + serp_text2
-                    self.browser.close_current_tab()
-            else:
-                # Even attempts: DDG first
-                serp_text, urls = self.browser.search_duckduckgo(queries.get("ddg", ""))
-                if not urls:
-                    self.browser.open_new_tab()
-                    serp_text2, urls = self.browser.search_google(queries.get("google", ""))
-                    serp_text += "\n" + serp_text2
-                    self.browser.close_current_tab()
-            
-            # Scrape top URLs
-            scraped = ""
-            for url in urls[:2]:
-                try:
-                    content = self.browser.scrape_text(url)
-                    if content:
-                        scraped += f"\n{content}"
-                except:
-                    pass
-            
-            # Extract field with LLM
-            if serp_text or scraped:
-                return self._extract_single_field(field, serp_text, scraped)
-            
-        except Exception as e:
-            self._log(f"      ⚠️ Retry error: {e}")
-        
-        return None
-    
-    def _extract_single_field(self, field: str, serp_text: str, scraped_content: str) -> Optional[str]:
-        """Extract a single field from search results using LLM."""
         
         field_descriptions = {
             "long_description": "A comprehensive 2-3 paragraph description of what the company does, their mission, and services",

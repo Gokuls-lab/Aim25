@@ -1,5 +1,5 @@
 import sys
-from agents import AutonomousLeadAgent
+from optimized_pipeline import OptimizedResearchAgent as AutonomousLeadAgent
 from report_generator import generate_report
 
 def main():
